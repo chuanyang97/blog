@@ -1,0 +1,25 @@
+---
+const {article} = Astro.props
+
+---
+<div class="article-container">
+     <a href={`/article/${article.slug}/`}>
+        <h2>{article.data?.title}</h2>
+    </a>
+
+</div>
+
+
+<style lang="less" scoped>
+    .article-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 600px;
+        border-radius: 12px;
+        background-color: pink;
+    }
+
+
+</style>

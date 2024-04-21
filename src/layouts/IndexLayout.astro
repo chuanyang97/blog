@@ -1,11 +1,10 @@
 ---
-console.log(Astro.props)
+import {indexConfig} from '../globalConfig'
+import Head from '../components/astro/Head.astro'
+const {title = indexConfig.defaultTitle} = Astro.props
 ---
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
+<html lang="zh" data-chuanyang-blog data-theme="dark">
+    <Head title={title} />
 <body>
 <slot></slot>
 </body>

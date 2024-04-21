@@ -1,0 +1,117 @@
+/* 清除浏览器的默认样式 */
+blockquote,
+body,
+button,
+dd,
+dl,
+dt,
+fieldset,
+form,
+hr,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    /* CSS3 抗锯齿形 让文字显示的更加清晰 */
+    -webkit-font-smoothing: antialiased;
+    font: 12px 'Microsoft YaHei', 'Heiti SC', tahoma, arial, Hiragino Sans GB, '\5B8B\4F53', sans-serif;
+    color: #000;
+    height: 100vh;
+    width: 100vw;
+}
+
+button,
+input {
+    font-family:  Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+    outline: none;
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+    font-style: normal
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: courier new, courier, monospace
+}
+
+small {
+    font-size: 12px;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none
+}
+
+sup {
+    vertical-align: text-top
+}
+
+sub {
+    vertical-align: text-bottom
+}
+
+legend {
+    color: #000
+}
+
+fieldset,
+img {
+    border: 0;
+    display: block;
+}
+
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+}
+
+.clearfix::before, .clearfix::after {
+    display: table;
+    clear: both;
+    content: '';
+}
+
+

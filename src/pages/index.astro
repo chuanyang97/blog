@@ -1,8 +1,195 @@
 ---
 import IndexLayout from '../layouts/IndexLayout.astro'
+import IndexHeader from '../components/astro/index/IndexHeader.astro'
+import QuoteSwiper from '../components/astro/index/section-widgets/QuoteSwiper.astro'
+import HeatArticleSwiper from '../components/astro/index/section-widgets/HeatArticleSwiper.astro'
+import ArticleCategory from '../components/astro/index/section-widgets/ArticleCategory.astro'
+import User from '../components/astro/index/aside-widgets/User.astro'
+import TagArticle from '../components/astro/index/content-widgets/TagArticle.astro'
+import Article from '../components/astro/index/content-widgets/Article.astro'
+import {getBlogPosts} from '../utils/index'
+
+
+const posts = (await getBlogPosts())
+
 ---
-<IndexLayout a="123">
-    <p>
-        sadfsadfsd
-    </p>
+<IndexLayout>
+    <div id="chuanyang-index">
+        <div class="chuanyang-warrper">
+            <header>
+                <IndexHeader />
+            </header>
+            <section>
+                <!-- ---------------------------内容组件 -- start------------------------ -->
+                <div class="section-main">
+                    <div class="main-container">
+                        <QuoteSwiper />
+                        <div class="main-container-item flex-row flex">
+                            <HeatArticleSwiper />
+                            <ArticleCategory />
+                        </div>
+                    </div>
+                </div>
+                <!-- ---------------------------内容组件 -- end------------------------ -->
+
+                <main>
+                    <!-- ------------------------- 侧边栏组件 -- start----------------------- -->
+                    <aside>
+                        <div class="aside-container">
+                            <div class="aside-container-item">
+                                <User />
+                            </div>
+                        </div>
+                    </aside>
+                    <!-- ------------------------- 侧边栏组件 -- end----------------------- -->
+                    <div class="content">
+                        <div class="content-contaienr">
+                            <div class="tag-list">
+                                <TagArticle />
+                            </div>
+                    <!-- --------------------------- 文章列表 -- start ----------------------- -->
+                            <article class="article-list">
+                                {
+                                    posts.map((item, index) => {
+                                        return (
+                                            <div class="article-item">
+                                                <Article article={item} index={index} />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </article>
+                    <!-- --------------------------- 文章列表 -- end ----------------------- -->
+                        </div>
+                    </div>
+                </main>
+                <footer>
+                    <div class="footer-container">      
+                        footer
+                    </div>
+                </footer>
+
+            </section>
+
+        </div>
+
+    </div>
+
 </IndexLayout>
+
+<style lang="stylus">
+    #chuanyang-index
+        width: 100vw
+        height: 100vh
+        overflow: hidden;
+        .chuanyang-warrper
+            width: 100%;
+            height: 100%;
+            header
+                height 65px
+            section
+                height: calc(100% - 65px)
+                max-width: 1500px
+                margin: 0 auto
+                padding:0 20px;
+                overflow: auto
+                // 滚动条
+                &::-webkit-scrollbar
+                    width: 8px
+                    display: none
+                    background: pink
+                &::-webkit-scrollbar-thumb
+                    background: pink
+                    border-radius: 5px
+                &::-webkit-scrollbar-track
+                    background: #f0f0f0
+                    border-radius: 5px
+                .section-main
+                    height: max-content;
+                    width: 100%;
+                    padding:20px 0
+                    .main-container
+                        width: 100%
+                        height: 100%
+                        border-radius: 12px
+                        .main-container-item
+                            padding-top: 20px
+                            
+                main
+                    height: max-content;
+                    position: relative;
+                    display: flex
+                    aside
+                        width: 280px
+                        height: 100%
+
+                        .aside-container
+                            width: 100%;
+                            height: 100%;
+                            .aside-container-item
+                                padding-bottom: 20px
+                                height: max-content;
+                    @media screen and (max-width: 1000px)
+                        aside
+                            display: none
+                        .content
+                            padding-left: 0 !important
+                    .content
+                        flex:1;
+                        height: 100%
+                        padding-left: 20px
+                        .content-contaienr
+                            width: 100%
+                            height: 100%
+                            border-radius: 12px
+                            
+                            .tag-list
+                                width: 100%
+                                height: 100%
+                                margin-bottom: 20px
+                            .article-list
+                                display: flex
+                                flex-wrap: wrap
+                                @media screen and (min-width:1201px)
+                                    .article-item
+                                       height: max-content;
+                                       width: calc(33.3333% - 14px);
+                                       margin-bottom: 20px
+                                       margin-right: 20px
+                                       &:nth-child(3n)
+                                           margin-right:0
+                                @media screen and (max-width: 1200px)
+                                    .article-item
+                                        width: calc(50% - 10px);
+                                        margin-right: 20px
+                                        margin-bottom: 20px
+                                        &:nth-child(2n)
+                                            margin-right:0
+                                @media screen and (max-width: 850px)
+                                    .article-item
+                                        width: calc(50% - 10px);
+                                        margin-right: 20px
+                                        margin-bottom: 20px
+                                        &:nth-child(2n)
+                                            margin-right:0
+                                        &:nth-child(3n)
+                                            margin-right:20px
+                                @media screen and (max-width: 650px)
+                                    .article-item
+                                        width: 100%
+                                        margin-right: 0 !important
+                                        margin-bottom: 20px
+
+                footer  
+                   height: max-content;
+                   width: 100%;
+                   z-index: 1;
+                   padding-top:20px
+                   padding-bottom:10px
+                   
+                   .footer-container
+                       width: 100%
+                       height: 80px
+                       background: pink
+                       border-radius: 8px
+</style>

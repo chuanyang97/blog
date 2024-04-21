@@ -1,0 +1,43 @@
+---
+import CyNav from '../../react/CyNav'
+---
+<div class="chuanyang-header">
+    <div class="logo-title">
+        <!-- <img src="{{ site.logo }}" alt="logo" class="logo"> -->
+        <h1>chuanyang</h1>
+    </div>
+    <div class="nav">
+        <CyNav client:load />
+    </div>
+    <div class="tools">
+        123
+
+    </div>
+
+</div>
+
+<style lang="stylus">
+    .chuanyang-header
+        width: 100%;
+        height:100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        .logo-title
+            display: flex;
+            align-items: center;
+            width: 150px;
+            h1
+                font-size: 24px;
+                font-weight: 700;
+                color: #333;
+        .nav
+            display: flex;
+            align-items: center;
+            flex:1;
+        .tools
+            width: 150px;
+            display: flex;
+            align-items: center;
+</style>
