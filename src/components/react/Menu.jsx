@@ -48,7 +48,7 @@ export default function App() {
 
 
   return (
-    <Navbar className="justify-center" classNames={'wrapper'}>
+    <Navbar className="chuanyang-nav justify-center" classNames={'wrapper'}>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {
           menu.map((item) => {
