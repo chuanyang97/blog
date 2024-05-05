@@ -1,20 +1,23 @@
 ---
-import Menu from '../../react/Menu'
+import HeaderMenu from "../../react/HeaderMenu.jsx";
+import { Button } from "@nextui-org/react";
+import SwitchDrak from "@/components/react/SwitchDrak";
+console.log(Astro.locals);
 
 ---
+
 <div class="chuanyang-header">
     <a class="logo-title" href="/">
         <!-- <img src="{{ site.logo }}" alt="logo" class="logo"> -->
         <h1>chuanyang</h1>
     </a>
     <div class="nav">
-        <Menu client:load />
+        <HeaderMenu client:load />
     </div>
     <div class="tools">
-        
-
+        <SwitchDrak  client:only="react"/>
+        <Button client:load color="default"> 登陆 </Button>
     </div>
-
 </div>
 
 <style lang="stylus">
@@ -38,7 +41,7 @@ import Menu from '../../react/Menu'
             align-items: center;
             flex:1;
         .tools
-            width: 150px;
             display: flex;
             align-items: center;
+            justify-content: flex-end;
 </style>

@@ -1,50 +1,12 @@
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, menu} from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, menu } from "@nextui-org/react";
+import { headerConfig } from "@/globalConfig";
 
+export default function () {
+  const { menu } = headerConfig
 
-export default function App() {
-
-  const menu = [
-    {
-      key: "home",
-      description: "首页",
-      label: "首页",
-
-    },
-    {
-      key: "文章",
-      label: "文章",
-      children:[
-        {
-          key: "category",
-          label: "分类",
-          description: "文章分类",
-        },
-        {
-          key: "tag",
-          label: "标签",
-          description: "文章标签",
-        },
-        {
-          key: "archive",
-          label: "归档",
-          description: "文章归档",
-        },
-      ]
-    },
-    {
-      key: "about",
-      label: "关于",
-
-    },
-    {
-      key: "contact",
-      label: "联系",
-    },
-    {
-      key: "friend",
-      label: "朋友",
-    },
-  ];
+  const onChangeMenu = (key,{children=[]}={}) => {
+    window.location.href = children.find(child => child.key === key).path
+  }
 
 
   return (
@@ -54,16 +16,23 @@ export default function App() {
           menu.map((item) => {
             if (item.children) {
               return (
-                <Dropdown key={item.key}>
-                  <NavbarItem>
+                <Dropdown key={item.key}> 
+                  <NavbarItem  aria-label={item.label}>
                     <DropdownTrigger>
                       <Button
                         disableRipple
                         className="p-0 bg-transparent data-[hover=true]:bg-transparent"
                         radius="sm"
                         variant="light"
+                        startContent={item.icon}
                       >
-                        {item.label}
+                        <span>
+                          {item.label}
+                          {
+                            item.children?.length ?
+                              <i className="icon icon-unfold"></i> : ""
+                          }
+                        </span>
                       </Button>
                     </DropdownTrigger>
                   </NavbarItem>
@@ -72,15 +41,20 @@ export default function App() {
                     itemClasses={{
                       base: "gap-4",
                     }}
+                    onAction={(key)=>onChangeMenu(key,item)}
                   >
                     {
                       item.children.map((child) => {
                         return (
                           <DropdownItem
                             key={child.key}
+                            aria-label={child.label}
                             description={child.description}
+                            startContent={child.icon}
                           >
-                            {child.label}
+                            {
+                              child.label
+                            }
                           </DropdownItem>
                         );
                       })
@@ -90,9 +64,21 @@ export default function App() {
               );
             } else {
               return (
-                <NavbarItem key={item.key}>
+                <NavbarItem key={item.key}    aria-label={item.label}>
                   <Button disableRipple className="p-0 bg-transparent data-[hover=true]:bg-transparent" radius="sm" variant="light">
-                    {item.label}
+                    {
+                      item.path ? (
+                        <a href={item.path}>
+                          {item.icon} &nbsp;
+                          {item.label}
+                        </a>
+                      ) : (
+                        <span>
+                          {item.icon} &nbsp;
+                          {item.label}
+                        </span>
+                      )
+                    }
                   </Button>
                 </NavbarItem>
               );

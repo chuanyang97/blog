@@ -3,8 +3,11 @@
 ---
 
 <div class="quote-swiper">
+    <div class="left">
+        <i class="icon icon-notification" style="font-size: 25px;"></i>
+    </div>
     <div class="swiper-container">
-        123
+        <p>内容。。。。。。。</p>
     </div>
 </div>
 
@@ -13,9 +16,16 @@
 height: 48px;
 background-color: #f5f5f5;
 border-radius: 12px;
+display: flex;
+align-items: center;
+.left{
+    margin: 0 10px;
+}
     .swiper-container {
-        width: 100%;
-        height: 100%;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .swiper-slide {

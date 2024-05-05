@@ -1,0 +1,36 @@
+---
+import IndexLayout from '../../layouts/IndexLayout.astro'
+import IndexHeader from './index/IndexHeader.astro'
+---
+
+<IndexLayout>
+    <section class="chuanyang-common-layout">
+        <header>
+            <IndexHeader />
+        </header>
+        <main>
+            <slot />
+        </main>
+    </section>
+</IndexLayout>
+
+<style lang="less">
+.chuanyang-common-layout{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+     header{
+        height:65px;
+        width: 100%;
+     }
+     main{
+        width: 100%;
+        height: calc(100% - 65px);
+        overflow: auto;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding:0 20px;
+     }
+}    
+
+</style>

@@ -1,10 +1,15 @@
 ---
-import {indexConfig} from '../globalConfig'
+import {indexConfig} from '../globalConfig.tsx'
 import Head from '../components/astro/Head.astro'
+
 const {title = indexConfig.defaultTitle} = Astro.props
 ---
-<html lang="zh" data-chuanyang-blog data-theme="dark">
+<html lang="zh" data-chuanyang-blog >
     <Head title={title} />
+    <script>
+        import { getTheme } from "@/hooks/useTheme";
+        document.documentElement.setAttribute('data-theme', getTheme());
+    </script>
 <body>
 <slot></slot>
 </body>
